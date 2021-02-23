@@ -1037,7 +1037,14 @@ namespace hpx {
                 hpx::util::index_pack<Is...>, Args&&... args)
             {
                 // Size should be non-negative
+#if defined(HPX_INTEL_VERSION)
+#pragma warning(push)
+#pragma warning(disable : 186)
+#endif
                 HPX_ASSERT(size >= 0);
+#if defined(HPX_INTEL_VERSION)
+#pragma warning(pop)
+#endif
 
                 // stride shall not be zero
                 HPX_ASSERT(stride != 0);

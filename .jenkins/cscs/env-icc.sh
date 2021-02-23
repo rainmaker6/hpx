@@ -8,7 +8,11 @@ source $SPACK_ROOT/share/spack/setup-env.sh
 
 export CRAYPE_LINK_TYPE=dynamic
 
-module load daint-mc
+# This makes deprecated modules available. This should be removed when a newer
+# Boost is available for CrayIntel-20.11.
+module use /apps/daint/UES/jenkins/7.0.UP02/gpu/easybuild/modules/all
+
+module load daint-gpu
 module switch PrgEnv-cray PrgEnv-intel
 module load Boost/1.75.0-CrayIntel-20.08
 module load hwloc/.2.0.3

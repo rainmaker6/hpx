@@ -40,8 +40,8 @@ namespace hpx { namespace util {
     HPX_CORE_EXPORT HPX_DECLARE_LOG(agas)
 
 #define LAGAS_(lvl)                                                            \
-    HPX_LOG_FORMAT(hpx::util::agas, ::hpx::util::logging::level::lvl, "{} ",   \
-        ::hpx::util::logging::level::lvl) /**/
+    HPX_LOG_FORMAT(hpx::util::agas, ::hpx::util::logging::level::lvl,          \
+        "{:10} ", ::hpx::util::logging::level::lvl) /**/
 
 #define LAGAS_ENABLED(lvl)                                                     \
     hpx::util::agas_logger()->is_enabled(::hpx::util::logging::level::lvl) /**/
@@ -50,8 +50,8 @@ namespace hpx { namespace util {
         HPX_CORE_EXPORT HPX_DECLARE_LOG(parcel)
 
 #define LPT_(lvl)                                                              \
-    HPX_LOG_FORMAT(hpx::util::parcel, ::hpx::util::logging::level::lvl, "{} ", \
-        ::hpx::util::logging::level::lvl) /**/
+    HPX_LOG_FORMAT(hpx::util::parcel, ::hpx::util::logging::level::lvl,        \
+        "{:10} ", ::hpx::util::logging::level::lvl) /**/
 
 #define LPT_ENABLED(lvl)                                                       \
     hpx::util::parcel_logger()->is_enabled(                                    \
@@ -61,8 +61,8 @@ namespace hpx { namespace util {
         HPX_CORE_EXPORT HPX_DECLARE_LOG(timing)
 
 #define LTIM_(lvl)                                                             \
-    HPX_LOG_FORMAT(hpx::util::timing, ::hpx::util::logging::level::lvl, "{} ", \
-        ::hpx::util::logging::level::lvl) /**/
+    HPX_LOG_FORMAT(hpx::util::timing, ::hpx::util::logging::level::lvl,        \
+        "{:10} ", ::hpx::util::logging::level::lvl) /**/
 #define LPROGRESS_                                                             \
     HPX_LOG_FORMAT(hpx::util::timing, ::hpx::util::logging::level::fatal,      \
         " {}:{} {} ", __FILE__, __LINE__, HPX_ASSERT_CURRENT_FUNCTION) /**/
@@ -75,8 +75,8 @@ namespace hpx { namespace util {
         HPX_CORE_EXPORT HPX_DECLARE_LOG(hpx)
 
 #define LHPX_(lvl, cat)                                                        \
-    HPX_LOG_FORMAT(hpx::util::hpx, ::hpx::util::logging::level::lvl, "{}{}",   \
-        ::hpx::util::logging::level::lvl, (cat)) /**/
+    HPX_LOG_FORMAT(hpx::util::hpx, ::hpx::util::logging::level::lvl,           \
+        "{:10}{}", ::hpx::util::logging::level::lvl, (cat)) /**/
 
 #define LHPX_ENABLED(lvl)                                                      \
     hpx::util::hpx_logger()->is_enabled(::hpx::util::logging::level::lvl) /**/
@@ -85,7 +85,7 @@ namespace hpx { namespace util {
         HPX_CORE_EXPORT HPX_DECLARE_LOG(app)
 
 #define LAPP_(lvl)                                                             \
-    HPX_LOG_FORMAT(hpx::util::app, ::hpx::util::logging::level::lvl, "{} ",    \
+    HPX_LOG_FORMAT(hpx::util::app, ::hpx::util::logging::level::lvl, "{:10} ", \
         ::hpx::util::logging::level::lvl) /**/
 
 #define LAPP_ENABLED(lvl)                                                      \
@@ -97,7 +97,7 @@ namespace hpx { namespace util {
 
 #define LDEB_                                                                  \
     HPX_LOG_FORMAT(hpx::util::debuglog, ::hpx::util::logging::level::error,    \
-        "{} ", ::hpx::util::logging::level::error) /**/
+        "{:10} ", ::hpx::util::logging::level::error) /**/
 
 #define LDEB_ENABLED                                                           \
     hpx::util::debuglog_logger()->is_enabled(                                  \
@@ -110,7 +110,7 @@ namespace hpx { namespace util {
 
 #define LFATAL_                                                                \
     HPX_LOG_FORMAT(hpx::util::hpx_error, ::hpx::util::logging::level::fatal,   \
-        "{} [ERR] ", ::hpx::util::logging::level::fatal) /**/
+        "{:10} [ERR] ", ::hpx::util::logging::level::fatal) /**/
 
             HPX_CORE_EXPORT HPX_DECLARE_LOG(agas_console) HPX_CORE_EXPORT
         HPX_DECLARE_LOG(parcel_console) HPX_CORE_EXPORT
@@ -186,8 +186,8 @@ namespace hpx { namespace util {
             }
 
             template <typename... Args>
-            dummy_log_impl const& format(char const*, Args const&...) const
-                noexcept
+            dummy_log_impl const& format(
+                char const*, Args const&...) const noexcept
             {
                 return *this;
             }

@@ -10,6 +10,7 @@
 #include <hpx/modules/format.hpp>
 #include <hpx/util/bad_lexical_cast.hpp>
 
+#include <sstream>
 #include <string>
 #include <type_traits>
 
@@ -21,7 +22,12 @@ namespace hpx { namespace util {
         {
             static std::string call(T const& value)
             {
-                return util::format("{}", value);
+                std::ostringstream os;
+
+                util::formatter<std::decay_t<T>> fmt;
+                fmt.parse("");
+                fmt.format(os, value);
+                return std::move(os).str();
             }
         };
 
